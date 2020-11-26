@@ -18,6 +18,8 @@ from armory.utils.config_loading import (
 )
 from armory.utils import metrics
 from armory.scenarios.base import Scenario
+import os
+import torch
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +45,6 @@ class AudioClassificationTask(Scenario):
         if defense_type in ["Preprocessor", "Postprocessor"]:
             logger.info(f"Applying internal {defense_type} defense to classifier")
             classifier = load_defense_internal(config["defense"], classifier)
-
         if model_config["fit"]:
             classifier.set_learning_phase(True)
             logger.info(
@@ -71,6 +72,14 @@ class AudioClassificationTask(Scenario):
             else:
                 logger.info("Fitting classifier on clean train dataset...")
                 classifier.fit_generator(train_data, **fit_kwargs)
+            # Save models
+            model_save_dir_ = fit_kwargs["save_path"]
+            if not os.path.exists(model_save_dir_):
+                os.makedirs(model_save_dir_)
+            torch.save(classifier._model._model.state_dict(), model_save_dir_+"/sail_model_state_dict.pt")
+            torch.save(classifier._model._model, model_save_dir_+"/sail_model.pt")
+            torch.save(classifier._optimizer.state_dict(), model_save_dir_+"/sail_optim_state_dict.pt")
+            torch.save(classifier._optimizer, model_save_dir_+"/sail_optim.pt")
 
         if defense_type == "Transform":
             # NOTE: Transform currently not supported

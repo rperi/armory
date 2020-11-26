@@ -109,3 +109,7 @@ venv.bak/
 
 # idea
 .idea/
+
+logs/
+saved_models/
+.gitignore

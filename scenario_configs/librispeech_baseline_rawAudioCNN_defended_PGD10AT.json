@@ -1,0 +1,67 @@
+{
+    "_description": "Librispeech_dev_clean raw audio classification, contributed by MITRE Corporation",
+    "adhoc": null,
+    "attack": {
+        "knowledge": "white",
+        "kwargs": {
+            "batch_size": 32,
+            "eps": 0.01,
+            "eps_step": 0.005,
+            "num_random_init": 0,
+            "targeted": false
+        },
+        "module": "art.attacks.evasion",
+        "name": "FastGradientMethod",
+        "use_label": false
+    },
+    "dataset": {
+        "batch_size": 1,
+        "framework": "numpy",
+        "module": "armory.data.datasets",
+        "name": "librispeech_dev_clean"
+    },
+    "defense": {
+	    "kwargs": {
+		"eps": 0.01,
+	        "eps_step": 0.005,
+	        "max_iter": 10,
+	        "ratio": 0.45},
+	    "module": "armory.art_experimental.defences.madry_trainer_generator",
+	    "name": "AdversarialTrainerMadryPGD",
+	    "type": "Trainer"
+    },
+    "metric": {
+        "means": true,
+        "perturbation": "linf",
+        "record_metric_per_sample": false,
+        "task": [
+            "categorical_accuracy"
+        ]
+    },
+    "model": {
+        "fit": false,
+        "fit_kwargs": {
+            "fit_batch_size": 16,
+            "nb_epochs": 300,
+	    "save_path": "/work/rperi/gard/scripts/eval_Dec2020/saved_models/FGSM_defended_PGD10AT/epochs_300_Adam_lr5e-4_allModels_ratio_0.45_dropout/"
+        },
+        "model_kwargs": {},
+        "module": "sail_dev.models.sail_hat",
+        "name": "get_art_model",
+        "weights_file": "/work/rperi/gard/scripts/eval_Dec2020/saved_models/FGSM_defended_PGD10AT/epochs_2000_Adam_lr1e-4_allModels/saved_ep_300.pth",
+        "wrapper_kwargs": {}
+    },
+    "scenario": {
+        "kwargs": {},
+        "module": "armory.scenarios.audio_classification",
+        "name": "AudioClassificationTask"
+    },
+    "sysconfig": {
+        "docker_image": null,
+        "external_github_repo": "rperi/gard-hybrid-adversarial-training-eval-dec2020",
+        "gpus": "all",
+        "output_dir": null,
+        "output_filename": null,
+        "use_gpu": false
+    }
+}

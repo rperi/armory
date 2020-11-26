@@ -12,7 +12,7 @@ import requests
 
 from armory import paths
 from armory.configuration import get_verify_ssl
-
+import pdb
 
 logger = logging.getLogger(__name__)
 
@@ -62,7 +62,6 @@ def download_and_extract_repo(
     :param external_repo_name: String name of "organization/repo-name" or "organization/repo-name@branch"
     """
     verify_ssl = get_verify_ssl()
-
     if external_repo_dir is None:
         external_repo_dir = paths.runtime_paths().external_repo_dir
 
@@ -73,7 +72,8 @@ def download_and_extract_repo(
         org_repo_name, branch = external_repo_name.split("@")
     else:
         org_repo_name = external_repo_name
-        branch = "master"
+        branch = "main"
+        #branch = "master"
     repo_name = org_repo_name.split("/")[-1]
 
     if "ARMORY_GITHUB_TOKEN" in os.environ and os.getenv("ARMORY_GITHUB_TOKEN") != "":
