@@ -20,16 +20,7 @@
         "module": "armory.data.datasets",
         "name": "librispeech_dev_clean"
     },
-    "defense": {
-	    "kwargs": {
-		"eps": 0.01,
-	        "eps_step": 0.005,
-	        "max_iter": 10,
-	        "ratio": 0.45},
-	    "module": "armory.art_experimental.defences.madry_trainer_generator",
-	    "name": "AdversarialTrainerMadryPGD",
-	    "type": "Trainer"
-    },
+    "defense": null,
     "metric": {
         "means": true,
         "perturbation": "linf",
@@ -43,12 +34,12 @@
         "fit_kwargs": {
             "fit_batch_size": 16,
             "nb_epochs": 2000,
-	    "save_path": "/work/rperi/gard/scripts/eval_Dec2020/saved_models/FGSM_defended_PGD10AT/epochs_2000_Adam_lr5e-4_allModels_ratio_0.45_newART_newArmory/"
+	    "save_path": null
         },
         "model_kwargs": {},
         "module": "sail_dev.models.sail_hat",
         "name": "get_art_model",
-        "weights_file": "/work/rperi/gard/scripts/eval_Dec2020/saved_models/FGSM_defended_PGD10AT/epochs_2000_Adam_lr5e-4_allModels_ratio_0.45_newART_newArmory/saved_ep_700.pth",
+        "weights_file": null,
         "wrapper_kwargs": {}
     },
     "scenario": {
@@ -58,7 +49,7 @@
     },
     "sysconfig": {
         "docker_image": null,
-        "external_github_repo": "rperi/gard-hybrid-adversarial-training-eval-dec2020",
+        "external_github_repo": null,
         "gpus": "all",
         "output_dir": null,
         "output_filename": null,

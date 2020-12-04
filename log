@@ -1,0 +1,13 @@
+2020-11-26 21:21:40 kronos art.attacks.evasion.fast_gradient[2999076] INFO Success rate of FGM attack: 0.00%                                                                           
+2020-11-26 21:21:40 kronos art.attacks.evasion.fast_gradient[2999076] INFO Using model predictions as correct labels for FGM.                                                          
+2020-11-26 21:21:40 kronos art.attacks.evasion.fast_gradient[2999076] INFO Success rate of FGM attack: 0.00%                                                                           
+2020-11-26 21:21:40 kronos art.attacks.evasion.fast_gradient[2999076] INFO Using model predictions as correct labels for FGM.                                                          
+2020-11-26 21:21:40 kronos art.attacks.evasion.fast_gradient[2999076] INFO Success rate of FGM attack: 100.00%                                                                         
+2020-11-26 21:21:40 kronos art.attacks.evasion.fast_gradient[2999076] INFO Using model predictions as correct labels for FGM.                                                          
+2020-11-26 21:21:40 kronos art.attacks.evasion.fast_gradient[2999076] INFO Success rate of FGM attack: 100.00%                                                                         
+2020-11-26 21:21:40 kronos art.attacks.evasion.fast_gradient[2999076] INFO Using model predictions as correct labels for FGM.                                                          
+2020-11-26 21:21:40 kronos art.attacks.evasion.fast_gradient[2999076] INFO Success rate of FGM attack: 100.00%                                                                         
+Attack: 100%|██████████████████████████████████████████████████| 640/640 [00:14<00:00, 43.92it/s]                                                                                      
+2020-11-26 21:21:40 kronos armory.utils.metrics[2999076] INFO Average categorical_accuracy on adversarial test examples relative to ground truth labels: 35.47%                        
+2020-11-26 21:21:40 kronos armory.scenarios.base[2999076] INFO Saving evaluation results to /work/rperi/gard/armory/outputs/2020-11-27T052117.479533/AudioClassificationTask_1606454500
+.json path inside container.
